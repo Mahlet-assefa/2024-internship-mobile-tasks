@@ -11,6 +11,8 @@ class Searchpro extends StatefulWidget {
 class _SearchproState extends State<Searchpro> {
   bool _isFilterVisible = false;
   RangeValues _currentRangeValues = const RangeValues(20, 60);
+  
+  get product => null;
 
   Widget customcard(
       {img, proname, price, desc, rating, required BuildContext context}) {
@@ -22,7 +24,9 @@ class _SearchproState extends State<Searchpro> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const Description(),
+                builder: (context) =>  Description(
+                  product: product,
+                ),
               ),
             );
           },

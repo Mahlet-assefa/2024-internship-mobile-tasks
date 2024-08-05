@@ -4,13 +4,19 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is an ecommerce app implementation for customers to view leather brand shoes,add shoes brand, search and filter using prices and categories and finally view the shoes descriptions. 
+The application is developed using flutter
 
-A few resources to get you started if this is your first Flutter project:
+Home page UI running on android phone:
+<img src="assets/images/homepage1.jpg" alt="sample UI" width="200"/>
+<img src="assets/images/homepage2.jpg" alt="sample UI" width="200"/>
+Product Description page:
+<img src="assets/images/descpage2.jpg" alt="sample UI" width="200"/>
+Add product pages:
+<img src="assets/images/addproduct1.jpg" alt="sample UI" width="200"/>
+<img src="assets/images/addproduct2.jpg" alt="sample UI" width="200"/>
+Searching and filtering pages:
+<img src="assets/images/addproduct1.jpg" alt="sample UI" width="200"/>
+<img src="assets/images/addproduct2.jpg" alt="sample UI" width="200"/>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

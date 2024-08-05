@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/product_collect.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/Search.dart';
 import "package:ecommerce_app/form.dart";
@@ -21,7 +22,9 @@ class Products extends StatelessWidget {
   const Products({super.key});
 
   Widget customcard(
-      {img, proname, price, desc, rating, required BuildContext context}) {
+      {
+        required Product product,
+        required BuildContext context}) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
@@ -31,7 +34,7 @@ class Products extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    const Description(), // Replace with your actual page
+                     Description(product: product,), 
               ),
             );
           },
@@ -40,19 +43,19 @@ class Products extends StatelessWidget {
             child: Card(
               child: Column(
                 children: [
-                  Image.asset(img),
+                  Image.asset(product.imageUrl),
                   Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(proname,
+                        child: Text(product.name,
                             style:
                                 const TextStyle(fontWeight: FontWeight.bold)),
                       ),
                       const Spacer(),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(price,
+                        child: Text(product.price,
                             style:
                                 const TextStyle(fontWeight: FontWeight.bold)),
                       ),
@@ -62,7 +65,7 @@ class Products extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(desc,
+                        child: Text(product.category,
                             style: const TextStyle(color: Colors.grey)),
                       ),
                       const Spacer(),
@@ -74,7 +77,7 @@ class Products extends StatelessWidget {
                               Icons.star,
                               color: Color.fromARGB(255, 225, 203, 5),
                             ),
-                            Text(rating,
+                            Text(product.rating,
                                 style: const TextStyle(color: Colors.grey)),
                           ],
                         ),
@@ -221,35 +224,47 @@ class Products extends StatelessWidget {
               child: Column(
                 children: [
                   customcard(
-                    desc: "men's shoe",
-                    img: 'assets/images/image.png',
+                    product:  Product(
+                    category: "men's shoe",
+                    imageUrl: 'assets/images/image.png',
                     price: "\$120",
-                    proname: "derby Leather Shoes",
+                    name: "derby Leather Shoes",
                     rating: "(4.0)",
+                    description: "A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe."),
+
                     context: context,
                   ),
                   customcard(
-                    desc: "men's shoe",
-                    img: 'assets/images/image.png',
-                    price: "\$120",
-                    proname: "derby Leather Shoes",
-                    rating: "(4.0)",
+                    product:  Product(
+                    category: "men's shoe",
+                    imageUrl: 'assets/images/image.png',
+                    price: "\$130",
+                    name: "leakers Shoes",
+                    rating: "(2.0)",
+                    description: "Nike, a renowned global brand, offers a wide range of innovative and stylish footwear, one of which is the Nike Air Max 270. The Air Max 270 is known for its modern design and exceptional comfort. It features a sleek, breathable mesh upper that provides a snug fit while ensuring optimal airflow. The shoe's standout feature is its large Air Max unit in the heel, offering superior cushioning and impact absorption, making it ideal for all-day wear. Additionally, the foam midsole delivers responsive support, and the durable rubber outsole ensures excellent traction. "),
+
                     context: context,
                   ),
                   customcard(
-                    desc: "men's shoe",
-                    img: 'assets/images/image.png',
-                    price: "\$120",
-                    proname: "derby Leather Shoes",
-                    rating: "(4.0)",
+                    product:  Product(
+                    category: "women's shoe",
+                    imageUrl: 'assets/images/image.png',
+                    price: "\$140",
+                    name: "sneakers Shoes",
+                    rating: "(3.0)",
+                    description: "A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe."),
+
                     context: context,
                   ),
                   customcard(
-                    desc: "men's shoe",
-                    img: 'assets/images/image.png',
-                    price: "\$120",
-                    proname: "derby Leather Shoes",
-                    rating: "(4.0)",
+                    product:  Product(
+                    category: "women shoe",
+                    imageUrl: 'assets/images/image.png',
+                    price: "\$150",
+                    name: "nike Shoes",
+                    rating: "(5.0)",
+                    description: "Gucci, an iconic name in the luxury fashion industry, is synonymous with elegance, sophistication, and timeless style. Founded in Florence in 1921 by Guccio Gucci, the brand initially gained recognition for its high-quality leather goods, including luggage and equestrian accessories. Over the decades, Gucci has expanded its offerings to include ready-to-wear clothing, handbags, footwear, accessories, and fragrances, all characterized by exceptional craftsmanship and innovative design."),
+
                     context: context,
                   ),
                 ],

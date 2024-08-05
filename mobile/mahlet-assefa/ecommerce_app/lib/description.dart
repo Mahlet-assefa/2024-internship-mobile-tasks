@@ -1,7 +1,21 @@
+import 'package:ecommerce_app/product_collect.dart';
+import 'package:ecommerce_app/update.dart';
 import 'package:flutter/material.dart';
+// import 'package:ecommerce_app/product_collect.dart';
 
 class Description extends StatefulWidget {
-  const Description({super.key});
+  // final String img;
+  // final String proname;
+  // final String price;
+  // final String desc;
+  // final String rating;
+
+  //
+  const Description({
+    super.key,
+    required this.product,
+  });
+  final Product product;
 
   @override
   State<Description> createState() => _DescriptionState();
@@ -9,6 +23,7 @@ class Description extends StatefulWidget {
 
 class _DescriptionState extends State<Description> {
   int selectedSizeIndex = -1;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +31,7 @@ class _DescriptionState extends State<Description> {
         child: SingleChildScrollView(
           child: Column(children: [
             Stack(children: [
-              Image.asset('assets/images/shoe.jpg'),
+              Image.asset(widget.product.imageUrl),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -36,46 +51,47 @@ class _DescriptionState extends State<Description> {
                 ),
               ),
             ]),
-            const Row(children: [
+            Row(children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  "men's shoe",
-                  style: TextStyle(fontWeight: FontWeight.w300),
+                  widget.product.category,
+                  style: const TextStyle(fontWeight: FontWeight.w300),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: Colors.yellow,
                     ),
                     Text(
-                      "(4.0)",
-                      style: TextStyle(fontWeight: FontWeight.w300),
+                      widget.product.rating,
+                      style: const TextStyle(fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),
               ),
             ]),
-            const Row(
+            Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    "Derby Leather",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    widget.product.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
-                    "\$120",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    widget.product.price,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -86,7 +102,8 @@ class _DescriptionState extends State<Description> {
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       "Size:",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     )),
               ],
             ),
@@ -135,11 +152,11 @@ class _DescriptionState extends State<Description> {
               ),
             ),
             const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                  "A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe."),
-            ),
+            Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  widget.product.description,
+                )),
             Row(
               children: [
                 const SizedBox(height: 20),
@@ -167,7 +184,14 @@ class _DescriptionState extends State<Description> {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return Updated(product: widget.product
+                            );
+                          },
+                        ),
+                      );
                     },
                     // ignore: sort_child_properties_last
                     child: const Text(
