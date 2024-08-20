@@ -17,7 +17,7 @@ class ProductModel extends Product {
       name: json['name'] ?? '', 
       description: json['description'] ?? '', 
       category: json['category'], 
-      imgurl: json['imgurl'] ?? '', // Default to an empty string if null
+      imgurl: json['imageUrl'] ?? '', // Default to an empty string if null
       price: json['price'].toString(),
     );
   }
@@ -46,5 +46,6 @@ class ProductModel extends Product {
       price: price,
     );
   }
+  
 }
 

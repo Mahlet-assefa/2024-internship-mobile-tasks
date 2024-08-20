@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import '../model/product_model.dart';
 import '../models/product_model.dart';
 
+// ignore: camel_case_types
 abstract class localDataSource{
     List<ProductModel> getallproduct();
     Future<void> addproduct(ProductModel newproduct) ;

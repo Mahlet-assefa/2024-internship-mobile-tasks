@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../Data/models/product_model.dart';
+
 class Product extends Equatable {
   final String id;
   final String name;
@@ -26,4 +28,15 @@ class Product extends Equatable {
         imgurl,
         price,
       ];
+
+  ProductModel toModel() {
+    return ProductModel(
+      id: id,
+      name: name,
+      category: category,
+      description: description,
+      imgurl: imgurl,
+      price: price,
+    );
+  }
 }

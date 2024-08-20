@@ -8,11 +8,11 @@ import 'package:product_site/features/product/domain/usecases/updateproduct.dart
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late Updateproductuecase updateproductuecase;
+  late Updateproductusecase updateproductusecase;
   late MockProductRepositories mockProductRepositories;
   setUp(() {
     mockProductRepositories = MockProductRepositories();
-    updateproductuecase = Updateproductuecase(mockProductRepositories);
+    updateproductusecase = Updateproductusecase(mockProductRepositories);
   });
 
   Product testProductDetail = const Product(
@@ -25,20 +25,36 @@ void main() {
   );
   test('updated the products', () async {
     //arrange
-    when(mockProductRepositories.updateproduct(id: testProductDetail.id,name:testProductDetail.name,description: testProductDetail.description,price:testProductDetail.price))
+    when(mockProductRepositories.updateproduct(
+            id: testProductDetail.id,
+            name: testProductDetail.name,
+            description: testProductDetail.description,
+            price: testProductDetail.price))
         .thenAnswer((_) async => Right(testProductDetail));
     //act
-    final result = await updateproductuecase.execute(id: testProductDetail.id,name:testProductDetail.name,description: testProductDetail.description,price:testProductDetail.price);
+    final result = await updateproductusecase.execute(
+        id: testProductDetail.id,
+        name: testProductDetail.name,
+        description: testProductDetail.description,
+        price: testProductDetail.price);
     //assert
     expect(result, Right(testProductDetail));
   });
   ServerFailure failure = const ServerFailure('failing');
   test('failed updating the products', () async {
     //arrange
-    when(mockProductRepositories.updateproduct(id: testProductDetail.id,name:testProductDetail.name,description: testProductDetail.description,price:testProductDetail.price))
+    when(mockProductRepositories.updateproduct(
+            id: testProductDetail.id,
+            name: testProductDetail.name,
+            description: testProductDetail.description,
+            price: testProductDetail.price))
         .thenAnswer((_) async => Left(failure));
     //act
-    final result = await updateproductuecase.execute(id: testProductDetail.id,name:testProductDetail.name,description: testProductDetail.description,price:testProductDetail.price);
+    final result = await updateproductusecase.execute(
+        id: testProductDetail.id,
+        name: testProductDetail.name,
+        description: testProductDetail.description,
+        price: testProductDetail.price);
     //assert
     expect(result, Left(failure));
   });
